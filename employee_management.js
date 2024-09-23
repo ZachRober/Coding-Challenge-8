@@ -1,5 +1,5 @@
 class Employee {
-    Constructor(name,salary,position,department){
+    constructor(name,salary,position,department){
         this.name=name;
         this.salary=salary;
         this.position=position;
@@ -11,7 +11,7 @@ console.log(`${this.name} makes ${this.salary} working as a ${this.position} in 
         }
     }
 class Department{
-    Constructor(name){
+    constructor(name){
     this.name = name;
     this.employees = [];//empty array to add objects to
     }
@@ -26,7 +26,7 @@ class Department{
     }
 }
 class Manager extends Employee{
-    Constructor(name,salary,position,department,bonus){
+    constructor(name,salary,position,department,bonus=0){
         super(name,salary,position,department);//super calls the parent class
         this.bonus = bonus;
     }
@@ -36,10 +36,11 @@ console.log(`${this.name} makes ${this.salary} working as a ${this.position} in 
     }
 }
 Department.prototype.calculateTotalSalaryWithBonus=function(deptName){
-let oldTotal = this.getDepartmentSalary(deptName);//whatever dept we want returns dept total wo/bonus
-let newTotal = oldTotal + this.bonus;//add the bonus after
-console.log(`Total with bonus is ${newTotal}`);
-}
+    let oldTotal = this.getDepartmentSalary(deptName);//whatever dept we want returns dept total wo/bonus
+    let newTotal = oldTotal + this.bonus;//add the bonus after
+    return newTotal;
+    }
+
 
 
 
