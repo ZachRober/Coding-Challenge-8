@@ -36,8 +36,10 @@ console.log(`${this.name} makes ${this.salary} working as a ${this.position} in 
     }
 }
 Department.prototype.calculateTotalSalaryWithBonus=function(deptName){
-    let oldTotal = this.getDepartmentSalary(deptName);//whatever dept we want returns dept total wo/bonus
-    let newTotal = oldTotal + this.bonus;//add the bonus after
+    let oldTotal = this.getDepartmentSalary(deptName);
+    let bonusTotal = 0;
+    this.employees.forEach(x=>{if(x.bonus!==undefined){bonusTotal+=x.bonus}});
+    let newTotal = oldTotal + bonusTotal;//add the bonus after
     return newTotal;
     }
 
@@ -68,3 +70,5 @@ console.log(`Total salary for Engineering: $${engineering.getDepartmentSalary()}
 console.log(`Total salary with bonuses for Engineering: $${engineering.calculateTotalSalaryWithBonus()}`);
 console.log(`Total salary for Marketing: $${marketing.getDepartmentSalary()}`);
 console.log(`Total salary with bonuses for Marketing: $${marketing.calculateTotalSalaryWithBonus()}`);
+
+charlie.getDetails();
