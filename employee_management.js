@@ -22,17 +22,23 @@ class Department{
         let total = 0;
         this.name = deptName;
         this.employees.forEach(x=>total+=x.salary);
+        return total;
     }
 }
 class Manager extends Employee{
     Constructor(name,salary,position,department,bonus){
-        super(name,salary,position,department);
+        super(name,salary,position,department);//super calls the parent class
         this.bonus = bonus;
     }
     getDetails(){
 console.log(`${this.name} makes ${this.salary} working as a ${this.position} in the ${this.department} department. Bonus is ${this.bonus}`);
         return;  
     }
+}
+Department.prototype.calculateTotalSalaryWithBonus=function(deptName){
+let oldTotal = this.getDepartmentSalary(deptName);//whatever dept we want returns dept total wo/bonus
+let newTotal = oldTotal + this.bonus;//add the bonus after
+console.log(`Total with bonus is ${newTotal}`);
 }
 
 
