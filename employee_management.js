@@ -24,6 +24,13 @@ class Department{
         this.employees.forEach(x=>total+=x.salary);
         return total;
     }
+    calculateTotalSalaryWithBonus=function(deptName){
+        let oldTotal = this.getDepartmentSalary(deptName);
+        let bonusTotal = 0;
+        this.employees.forEach(x=>{if(x.bonus!==undefined){bonusTotal+=x.bonus}});
+        let newTotal = oldTotal + bonusTotal;//add the bonus after
+        return newTotal;
+        }
 }
 class Manager extends Employee{
     constructor(name,salary,position,department,bonus=0){
@@ -35,13 +42,7 @@ console.log(`${this.name} makes ${this.salary} working as a ${this.position} in 
         return;  
     }
 }
-Department.prototype.calculateTotalSalaryWithBonus=function(deptName){
-    let oldTotal = this.getDepartmentSalary(deptName);
-    let bonusTotal = 0;
-    this.employees.forEach(x=>{if(x.bonus!==undefined){bonusTotal+=x.bonus}});
-    let newTotal = oldTotal + bonusTotal;//add the bonus after
-    return newTotal;
-    }
+
 
 
 
